@@ -7,7 +7,7 @@
 //****************************************************
 
 
-package com.DivideGraphics.Chess.KnightsTour;
+package thesecretsquad.Chess.KnightsTour;
 
 public class RunMain
 {

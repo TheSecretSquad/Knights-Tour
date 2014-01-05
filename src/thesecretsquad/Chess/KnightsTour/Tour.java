@@ -7,11 +7,11 @@
 //Written By: Peter DiSalvo 
 //****************************************************
 
-package com.DivideGraphics.Chess.KnightsTour;
+package thesecretsquad.Chess.KnightsTour;
 
-import com.DivideGraphics.Chess.ChessBoard;
-import com.DivideGraphics.Chess.Knight;
-import com.DivideGraphics.Chess.Square;
+import thesecretsquad.Chess.ChessBoard;
+import thesecretsquad.Chess.Knight;
+import thesecretsquad.Chess.Square;
 
 public class Tour
 {

@@ -6,7 +6,7 @@
 //Written By: Peter DiSalvo 
 //****************************************************
 
-package com.DivideGraphics.Chess.KnightsTour;
+package thesecretsquad.Chess.KnightsTour;
 
 import java.awt.*;
 import java.awt.event.*;

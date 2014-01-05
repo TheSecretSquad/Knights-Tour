@@ -7,7 +7,7 @@
 //****************************************************
 
 
-package com.DivideGraphics.Chess;
+package thesecretsquad.Chess;
 
 public class ChessBoard
 {

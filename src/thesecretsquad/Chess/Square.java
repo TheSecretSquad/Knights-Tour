@@ -6,7 +6,7 @@
 //Written By: Peter DiSalvo 
 //****************************************************
 
-package com.DivideGraphics.Chess;
+package thesecretsquad.Chess;
 
 public class Square
 {
