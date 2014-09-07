@@ -164,19 +164,19 @@ public class AppWindow extends JFrame
 	//****************************************************
 	private int promptBoardSize()
 	{
-		String 	szBoardSize;			// String value to hold user input
-		int 	iBoardSize = 0;			// Integer value to be returned
-		boolean bInvalidString = true;	// True indicates that the input is invalid
+		String 	userBoardSize;			// String value to hold user input
+		int 	boardSize = 0;			// Integer value to be returned
+		boolean isUserInputInvalid = true;	// True indicates that the input is invalid
 		
 		// Do the following while user input is invalid
 		do
 		{
 			// Prompt user for input and store in String variable
-			szBoardSize = JOptionPane.showInputDialog("Enter an integer to set the number of rows and columns on the board:");
+			userBoardSize = JOptionPane.showInputDialog("Enter an integer to set the number of rows and columns on the board:");
 			
 			// If user input is a null value, user clicked cancel or closed the window,
 			// so exit the program.
-			if(szBoardSize == null)
+			if(userBoardSize == null)
 			{
 				System.exit(0);
 			}
@@ -185,20 +185,20 @@ public class AppWindow extends JFrame
 				try
 				{
 					// Test if string is empty and assign boolean value to bInvalidString
-					bInvalidString = szBoardSize.isEmpty();
+					isUserInputInvalid = userBoardSize.isEmpty();
 
 					// parseInt throws NumberFormatException if the String is empty or equal to ""
-					iBoardSize = Integer.parseInt(szBoardSize);
+					boardSize = Integer.parseInt(userBoardSize);
 					
 					// If parseInt did not throw an exception, program will continue here.
 					// If board size is zero, string is still invalid, so display error
-					if(iBoardSize <= 0 || iBoardSize >= m_MAX_BOARD_SIZE)
+					if(boardSize <= 0 || boardSize >= m_MAX_BOARD_SIZE)
 					{
 						String szMessage;
 						
-						bInvalidString = true;
+						isUserInputInvalid = true;
 						
-						szMessage = iBoardSize <= 0 ? "You must enter a valid integer value." : String.format("Board size can not exceed %d", m_MAX_BOARD_SIZE);
+						szMessage = boardSize <= 0 ? "You must enter a valid integer value." : String.format("Board size can not exceed %d", m_MAX_BOARD_SIZE);
 						
 						JOptionPane.showMessageDialog(this, szMessage, "Invalid Number", JOptionPane.WARNING_MESSAGE);
 					}
@@ -212,12 +212,12 @@ public class AppWindow extends JFrame
 			}
 				
 		}
-		while(bInvalidString == true);
+		while(isUserInputInvalid == true);
 		
 		// At this point the input is valid, so set board size and return
-		iBoardSize = Integer.parseInt(szBoardSize);
+		boardSize = Integer.parseInt(userBoardSize);
 			
-		return iBoardSize;
+		return boardSize;
 	}
 	
 	//****************************************************
@@ -265,12 +265,12 @@ public class AppWindow extends JFrame
 	//****************************************************
 	private void flashColor()
 	{
-		int			iCurrentRow = m_knightsTour.getKnight().getCurrentRow();
-		int			iCurrentCol = m_knightsTour.getKnight().getCurrentCol();
-		GUISquare	gsqCurrentSquare = m_guiSquares[iCurrentRow][iCurrentCol];
+		int			currentRow = m_knightsTour.getKnight().getCurrentRow();
+		int			currentCol = m_knightsTour.getKnight().getCurrentCol();
+		GUISquare	currentSquare = m_guiSquares[currentRow][currentCol];
 		Color 		flashColor = Color.orange;
 		
-		gsqCurrentSquare.setBackground(flashColor);
+		currentSquare.setBackground(flashColor);
 	}
 	
 	//****************************************************
@@ -301,20 +301,20 @@ public class AppWindow extends JFrame
 	//****************************************************
 	private void moveKnight()
 	{
-		GUISquare	gsqCurrentSquare;		// Stores the current square (position of knight)
-		int			iCurrentRow;			// Current row position of knight
-		int			iCurrentCol;			// Current column position of knight
+		GUISquare	currentSquare;		// Stores the current square (position of knight)
+		int			currentRow;			// Current row position of knight
+		int			currentCol;			// Current column position of knight
 		
 		// Get current row and column of knight
-		iCurrentRow = m_knightsTour.getKnight().getCurrentRow();
-		iCurrentCol = m_knightsTour.getKnight().getCurrentCol();
+		currentRow = m_knightsTour.getKnight().getCurrentRow();
+		currentCol = m_knightsTour.getKnight().getCurrentCol();
 		
 		// Set current square
-		gsqCurrentSquare = m_guiSquares[iCurrentRow][iCurrentCol];
+		currentSquare = m_guiSquares[currentRow][currentCol];
 	
 		
 		// Set the text label on the current square
-		gsqCurrentSquare.setText(Integer.toString(m_knightsTour.getKnight().getMoveCounter()));
+		currentSquare.setText(Integer.toString(m_knightsTour.getKnight().getMoveCounter()));
 
 		// Move the knight
 		m_knightsTour.move();
@@ -338,18 +338,18 @@ public class AppWindow extends JFrame
 	//****************************************************
 	public void askNewParam()
 	{
-		int 	iNewParamAnswer;	// Integer value of dialog response (Yes = 0, No = 1, Cancel = 3)
+		int 	newParamAnswer;	// Integer value of dialog response (Yes = 0, No = 1, Cancel = 3)
 
 		// Store response from dialog
-		iNewParamAnswer = JOptionPane.showConfirmDialog(this, "Do you want to use the same board?", "Paused", JOptionPane.YES_NO_CANCEL_OPTION);
+		newParamAnswer = JOptionPane.showConfirmDialog(this, "Do you want to use the same board?", "Paused", JOptionPane.YES_NO_CANCEL_OPTION);
 		
 		// If yes, user does not get new game parameters
-		if(iNewParamAnswer == 0)
+		if(newParamAnswer == 0)
 		{
 			m_useNewGameParams = false;
 		}
 		// If no, user gets new game parameters
-		else if(iNewParamAnswer == 1)
+		else if(newParamAnswer == 1)
 		{
 			m_useNewGameParams = true;
 		}
@@ -369,7 +369,7 @@ public class AppWindow extends JFrame
 	//****************************************************
 	public void tourPaused()
 	{
-		int iNewGameAnswer;		// Integer value of dialog response (Yes = 0, No = 1, Cancel = 3)
+		int newGameAnswer;		// Integer value of dialog response (Yes = 0, No = 1, Cancel = 3)
 		
 		// Stop the time, which pauses the tour
 		stopTimer();
@@ -378,10 +378,10 @@ public class AppWindow extends JFrame
 		m_isTourRunning = false;
 		
 		// Store response from dialog
-		iNewGameAnswer = JOptionPane.showConfirmDialog(this, "Start a new tour?", "Paused", JOptionPane.YES_NO_CANCEL_OPTION);
+		newGameAnswer = JOptionPane.showConfirmDialog(this, "Start a new tour?", "Paused", JOptionPane.YES_NO_CANCEL_OPTION);
 
 		// If yes
-		if(iNewGameAnswer == 0)
+		if(newGameAnswer == 0)
 		{
 			// User is asked if they want new game parameters.
 			// Preferences are stored in class member variables
@@ -395,7 +395,7 @@ public class AppWindow extends JFrame
 		}
 		// If no, set running to true
 		// and start the timer again
-		else if(iNewGameAnswer == 1)
+		else if(newGameAnswer == 1)
 		{
 			// If user does not want a new game
 			// set tour running flag back to true 
@@ -419,11 +419,11 @@ public class AppWindow extends JFrame
 	//************************************************
 	public void showHeuristics()
 	{
-		for(int iRow = 0; iRow < m_boardSize; iRow++)
+		for(int rowNumber = 0; rowNumber < m_boardSize; rowNumber++)
 		{
-			for(int iCol = 0; iCol < m_boardSize; iCol++)
+			for(int columnNumber = 0; columnNumber < m_boardSize; columnNumber++)
 			{
-				m_guiSquares[iRow][iCol].setText(Integer.toString(m_knightsTour.getSquare(iRow, iCol).getAccessibility()));
+				m_guiSquares[rowNumber][columnNumber].setText(Integer.toString(m_knightsTour.getSquare(rowNumber, columnNumber).getAccessibility()));
 			}
 		}
 	}
@@ -481,19 +481,19 @@ public class AppWindow extends JFrame
 				}
 				
 				// Nested loops iterate through all squares
-				for(int iRow = 0; iRow < m_boardSize; iRow++)
+				for(int rowNumber = 0; rowNumber < m_boardSize; rowNumber++)
 				{
-					for(int iCol = 0; iCol < m_boardSize; iCol++)
+					for(int columnNumber = 0; columnNumber < m_boardSize; columnNumber++)
 					{
 						// Compare the square to the event source, to figure
 						// out which square was clicked
-						if(meEvent.getSource() == m_guiSquares[iRow][iCol])
+						if(meEvent.getSource() == m_guiSquares[rowNumber][columnNumber])
 						{
 							// If the current square in the loop and the event source are equal, then
 							// the current square in the loop is the event source.
 							
 							// Set the start position  
-							m_knightsTour.setStartPosition(iRow, iCol);
+							m_knightsTour.setStartPosition(rowNumber, columnNumber);
 							
 							// Set tour running flag to true
 							m_isTourRunning = true;

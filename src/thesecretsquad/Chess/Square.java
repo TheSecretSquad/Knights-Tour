@@ -37,61 +37,6 @@ public class Square
 		m_moveNumber = 0;
 	}
 	
-	/*--NOTE--
-	 * Square locations haven not proven useful
-	public void setLocation(int in_iRow, int in_iCol)
-	{
-		m_iRowLocation = in_iRow;
-		m_iColLocation = in_iCol;
-	}
-	
-	public int getRowLocation()
-	{
-		return m_iRowLocation;
-	}
-	
-	public int getColLocation()
-	{
-		return m_iColLocation;
-	}
-	
-	public void setDistaneFromEdge(int in_iDistance)
-	{
-		m_iDistanceFromEdge = in_iDistance;
-	}
-	
-	public int getDistanceFromEdge()
-	{
-		return m_iDistanceFromEdge;
-	}
-	*/
-	
-	/*--NOTE--
-	 * Quadrants have not proven useful
-	//************************************************
-	//	Method: setQuadrant()
-	//
-	//	Purpose: Constructor
-	//************************************************
-	public void setQuadrant(int in_iQuadrant)
-	{
-		m_iQuadrant = in_iQuadrant;
-	}
-	*/
-	
-	/*--NOTE--
-	 * Quadrants have not proven useful
-	//************************************************
-	//	Method: getQuadrant()
-	//
-	//	Purpose: Constructor
-	//************************************************
-	public int getQuadrant()
-	{
-		return m_iQuadrant;
-	}
-	*/
-	
 	//************************************************
 	//	Method: setVisited()
 	//
