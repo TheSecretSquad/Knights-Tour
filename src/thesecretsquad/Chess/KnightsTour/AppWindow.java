@@ -14,6 +14,7 @@ import javax.swing.*;
 
 public class AppWindow extends JFrame
 {
+	private static final long serialVersionUID = -7445150193712167589L;
 	private Tour		m_knightsTour;					// Tour object
 	private int			m_boardSize;					// Board dimension
 	private GUISquare	m_guiSquares[][];				// Array of JPanels representing squares
