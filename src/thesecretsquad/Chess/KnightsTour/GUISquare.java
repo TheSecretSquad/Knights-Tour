@@ -13,48 +13,44 @@ package thesecretsquad.Chess.KnightsTour;
 import java.awt.*;
 import javax.swing.*;
 
-public class GUISquare extends JPanel
-{
+public class GUISquare extends JPanel {
 	private static final long serialVersionUID = 4729078763643541598L;
-	
-	private JLabel m_label;		// Label in panel
-	
-	//****************************************************
+
+	private JLabel label; // Label in panel
+
+	// ****************************************************
 	// Method: GUISquare
 	//
-	// Purpose: Constructor.  Initializes square.
-	//****************************************************
-	public GUISquare()
-	{
+	// Purpose: Constructor. Initializes square.
+	// ****************************************************
+	public GUISquare() {
 		// Create JLabel object
-		m_label = new JLabel();
-		
+		label = new JLabel();
+
 		// Set foreground color to white (text color will be white)
-		m_label.setForeground(Color.white);
-		
+		label.setForeground(Color.white);
+
 		// Add label to square panel
-		add(m_label);
+		add(label);
 	}
-	
-	//****************************************************
+
+	// ****************************************************
 	// Method: setText
 	//
 	// Purpose: Sets the square's label text with the
-	//			String parameter.
-	//****************************************************
-	public void setText(String in_szText)
-	{
-		m_label.setText(in_szText);
+	// String parameter.
+	// ****************************************************
+	public void setText(String text) {
+		label.setText(text);
 	}
-	
-	//****************************************************
+
+	// ****************************************************
 	// Method: resetText
 	//
 	// Purpose: Sets the square's label text to null, which
-	//			clears the label.
-	//****************************************************
-	public void resetText()
-	{
-		m_label.setText(null);
+	// clears the label.
+	// ****************************************************
+	public void resetText() {
+		label.setText(null);
 	}
 }
